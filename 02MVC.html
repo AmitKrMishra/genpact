@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<div ng-app="myApp">
+
+    <div>
+        <div ng-controller="myController">
+            {{name}}
+            <br>
+            {{id}}
+            <br>
+            {{flag}}
+            <br>
+            {{obj.message}}
+
+            <br>
+            {{getStatus()}}
+            <br>
+
+            <button ng-click="reverseName()">Reverse Name</button>
+            Reversed Name: {{reversedName}}
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular.min.js"></script>
+<script>
+
+    var app = angular.module('myApp', [])
+
+    app.controller('myController', function ($scope) {
+
+        $scope.name = "XYZ"
+        $scope.id = 123
+        $scope.flag = false
+        $scope.obj = {message: 'Some Message'}
+
+
+        $scope.getStatus = function () {
+            return $scope.name + ' : ' + $scope.id + ' : ' + $scope.obj.message
+        }
+
+        $scope.reverseName = function () {
+            $scope.reversedName = $scope.name.split('').reverse().join('');
+            console.log('This is goin to reverse')
+        }
+
+    })
+
+
+</script>
+
+
+</body>
+</html>

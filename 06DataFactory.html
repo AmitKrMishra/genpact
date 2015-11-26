@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<div ng-app="myApp">
+
+
+    <div ng-controller="firstController">
+        <input type="text" ng-model="data.title"/>
+          {{fName}} : {{lName}}
+
+        <button ng-click="data.reverseMessage(fName)">Reverse Message</button>
+
+        {{data.reversedString}}
+
+    </div>
+
+
+
+    <div ng-controller="secondController">
+        <input type="text" ng-model="data.title"/>
+        {{fName}} : {{lName}}
+
+
+    </div>
+
+
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular.min.js"></script>
+<script>
+
+    var app = angular.module('myApp', []);
+
+
+    app.factory('CommonData', function(){
+        var obj =  {
+            reversedString: '',
+            title: 'Mr.',
+            reverseMessage: function(input){
+                this.reversedString = input.split('').reverse().join('')
+            }
+
+        }
+        return obj;
+    })
+
+
+
+    app.controller('firstController', function ($scope, CommonData) {
+        $scope.data = CommonData
+        $scope.fName = 'Puneet'
+        console.log($scope)
+    })
+
+    function secondCntFunction($scope, CommonData) {
+        $scope.data = CommonData
+        $scope.lName = 'Vashisht'
+        console.log($scope)
+    }
+    app.controller('secondController', secondCntFunction)
+
+
+</script>
+
+
+</body>
+</html>

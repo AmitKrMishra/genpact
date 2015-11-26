@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<div ng-app="myApp">
+
+    <div>
+        <div ng-controller="myController">
+            <input type="text" placeholder="Enter Principal" ng-model="p"/>
+            <input type="text" placeholder="Enter Time" ng-model="t"/>
+            <input type="text" placeholder="Enter Rate" ng-model="r"/>
+            <br>
+
+          <button ng-click="calculateSI()">Calculate SI</button>
+
+            <br>
+            Simple Interest is: {{si}}
+        </div>
+    </div>
+
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.2/angular.min.js"></script>
+<script>
+
+    var app = angular.module('myApp', []);
+
+    app.controller('myController', function ($scope) {
+
+    console.log($scope)
+
+            $scope.calculateSI = function () {
+            $scope.si = $scope.p * $scope.t * $scope.r
+        }
+
+
+    })
+
+
+</script>
+
+
+</body>
+</html>
