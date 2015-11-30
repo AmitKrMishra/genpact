@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/css/foundation.css" rel="stylesheet"/>-->
+</head>
+<body>
+
+<div ng-app="myApp" ng-controller="myController">
+<input type="text" ng-model="fName"/>
+    <button ng-click="loadData()">Load Data</button>
+
+</div>
+<script src="../lib/angular.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+<script>
+
+    var app = angular.module('myApp',[]);
+
+    app.controller('myController', function($scope){
+        $scope.loadData = function(){
+
+            $.ajax({
+                url: "data.json",
+                type: 'GET',
+                success: function(result){
+                    console.log("Success")
+                    console.log(result)
+                    $scope.$apply();
+                    console.log(result.fName)
+                    $scope.fName = result.fName
+
+                }
+            });
+        }
+    })
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

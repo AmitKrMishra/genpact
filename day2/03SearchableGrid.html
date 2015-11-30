@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/css/foundation.css" rel="stylesheet"/>
+</head>
+<body>
+
+
+
+<div ng-app="myApp" ng-controller="myController">
+
+
+ <input type="text" placeholder="Search By Name" ng-model="search.empName"/>
+    <input type="text" placeholder="Search By Emp Id" ng-model="search.empId"/>
+    <input type="text" placeholder="Search All" ng-model="search.$"/>
+    <table>
+
+        <tr ng-repeat="employee in employeesList | filter: search | orderBy:'-empName'">
+            <td>{{$index + 1}}</td>
+            <td>{{employee.empId}}</td>
+            <td>{{employee.empName}}</td>
+        </tr>
+    </table>
+</div>
+<script src="../lib/angular.js"></script>
+<script>
+    var app = angular.module('myApp',[]);
+    app.controller('myController', function($scope){
+        $scope.employeesList = [{empId:23, empName:'Ramit'},
+            {empId:123, empName:'Priya'},
+            {empId:124, empName:'Priya'},
+            {empId:2, empName:'Rahul'},
+            {empId:233, empName:'Arun'}]
+        console.log($scope)
+    })
+
+
+</script>
+
+
+
+
+</body>
+</html>

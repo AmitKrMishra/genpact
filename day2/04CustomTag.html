@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/css/foundation.css" rel="stylesheet"/>-->
+</head>
+<body>
+
+<div ng-app="myApp">
+
+    <div ng-controller="myController">
+        <input type="text" ng-model="unread"/>
+        <gp-badge unread="{{unread}}">
+
+
+            <button class="btn btn-primary" type="button">
+                Messages <span class="badge">{{unread}}</span>
+            </button>
+
+        </gp-badge>
+
+
+
+
+    </div>
+
+
+</div>
+<script src="../lib/angular.js"></script>
+<script>
+    var app = angular.module('myApp', []);
+
+    app.directive('gpBadge', function () {
+        return {
+            restrict: 'AEC',
+            templateUrl: 'partial/test.html',
+            link: function (scope, e, attr) {
+                scope.unread = attr.unread;
+            }
+
+
+        }
+    })
+    app.controller('myController', function ($scope) {
+        $scope.unread = '33'
+    })
+
+
+</script>
+
+
+</body>
+</html>

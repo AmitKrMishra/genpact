@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/css/foundation.css" rel="stylesheet"/>-->
+</head>
+<body>
+
+<div ng-app="myApp">
+    Name: {{name}} <br>
+    Name:  <gp-badge></gp-badge>
+    <div ng-controller="myController">
+
+
+    </div>
+
+
+</div>
+<script src="../lib/angular.js"></script>
+<script>
+    var app = angular.module('myApp', []);
+
+    app.directive('gpBadge', function () {
+        return {
+            restrict: 'AEC',
+            template: '{{name}}'
+
+
+
+        }
+    })
+    app.controller('myController', function ($scope) {
+        $scope.name = 'Puneet VAshisht'
+    })
+
+
+</script>
+
+
+</body>
+</html>

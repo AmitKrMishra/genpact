@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+
+<div ng-app="myApp" ng-controller="myController">
+
+    <input   ng-model="name" type="text" placeholder="Type Something Here"/>
+    {{name | reverse | lowercase}}
+
+
+    <br>
+
+    <input   ng-model="text" type="text" placeholder="Type Something Here"/>
+    {{text | lowercase | capitalize}}
+</div>
+
+
+<script src="../lib/angular.js"></script>
+
+<script>
+    var app = angular.module('myApp',[]);
+
+    app.controller('myController', function($scope){
+        $scope.text = 'creating filters with AngularJS'
+    })
+
+    app.filter('reverse', function(){
+        return function(input){
+            if(input){
+                return input.split('').reverse().join('');
+            }
+        }
+    })
+
+
+    app.filter('capitalize', function(){
+        return function(input){
+            if(input){
+                return input[0].toUpperCase() + input.slice(1);
+            }
+        }
+    })
+</script>
+
+
+
+
+</body>
+</html>

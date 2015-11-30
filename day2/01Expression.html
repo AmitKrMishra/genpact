@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+
+<div ng-app="myApp">
+    <input   ng-model="a" type="text" placeholder="Type Something Here"/>
+    <input   ng-model="b" type="text" placeholder="Type Something Here"/>
+
+
+
+    {{a * b}}
+
+    <br>
+    <input   ng-model="name" type="text" placeholder="Type Something Here"/>
+    {{name | uppercase}}
+</div>
+
+
+<script src="../lib/angular.js"></script>
+
+<script>
+    var app = angular.module('myApp',[]);
+</script>
+
+
+
+
+</body>
+</html>

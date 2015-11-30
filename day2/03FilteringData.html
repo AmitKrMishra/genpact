@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+
+<div ng-app="myApp" ng-controller="myController">
+
+    {{employeesList | filter: {'empName': 'Priya'} }}
+</div>
+
+
+<script src="../lib/angular.js"></script>
+
+<script>
+    var app = angular.module('myApp',[]);
+
+    app.controller('myController', function($scope){
+        $scope.employeesList = [{empId:23, empName:'Ramit'},
+            {empId:123, empName:'Priya'},
+            {empId:124, empName:'Priya'},
+            {empId:2, empName:'Rahul'},
+            {empId:233, empName:'Arun'}]
+    })
+
+
+</script>
+
+
+
+
+</body>
+</html>
