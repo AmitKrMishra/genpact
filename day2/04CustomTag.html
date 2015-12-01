@@ -12,15 +12,8 @@
 
     <div ng-controller="myController">
         <input type="text" ng-model="unread"/>
-        <gp-badge unread="{{unread}}">
-
-
-            <button class="btn btn-primary" type="button">
-                Messages <span class="badge">{{unread}}</span>
-            </button>
-
-        </gp-badge>
-
+        <gp-badge step="1" initvalue="23"></gp-badge>
+        <gp-badge step="-1" initvalue="12"></gp-badge>
 
 
 
@@ -36,15 +29,26 @@
         return {
             restrict: 'AEC',
             templateUrl: 'partial/test.html',
-            link: function (scope, e, attr) {
-                scope.unread = attr.unread;
+            scope: {
+
+            },
+           link: function (scope, element, attr) {
+               console.log(scope)
+               scope.unread = attr.initvalue;
+               element.bind('click', function(){
+                   console.log('Click Event')
+                   console.log(scope.unread)
+                   scope.unread+= parseInt(attr.step);
+                   scope.$apply();
+               })
             }
 
 
         }
     })
     app.controller('myController', function ($scope) {
-        $scope.unread = '33'
+        console.log($scope)
+        $scope.unread = 33
     })
 
 
