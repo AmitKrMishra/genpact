@@ -11,9 +11,17 @@
 <div ng-app="myApp">
 
     <div ng-controller="myController">
+
+        Controller:: <br>
         <input type="text" ng-model="unread"/>
-        <gp-badge step="1" initvalue="23"></gp-badge>
-        <gp-badge step="-1" initvalue="12"></gp-badge>
+<br>
+<br>
+
+
+        Directive:: <br>
+        <gp-badge step="1" initvalue="23" myclass="btn btn-primary"></gp-badge>
+
+        <gp-badge step="-1" initvalue="unread" myclass="btn btn-warning"></gp-badge>
 
 
 
@@ -30,15 +38,17 @@
             restrict: 'AEC',
             templateUrl: 'partial/test.html',
             scope: {
-
+                unread: "=initvalue",
+                myclass: "@myclass"
             },
            link: function (scope, element, attr) {
                console.log(scope)
-               scope.unread = attr.initvalue;
+//               scope.unread = attr.initvalue;
+//               scope.myclass = myclass
                element.bind('click', function(){
                    console.log('Click Event')
                    console.log(scope.unread)
-                   scope.unread+= parseInt(attr.step);
+                   scope.unread= parseInt(scope.unread) + parseInt(attr.step);
                    scope.$apply();
                })
             }

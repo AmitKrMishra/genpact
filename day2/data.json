@@ -1,6 +1,6 @@
 {
-  "fName": "Puneet",
-  "lName": "Vashisht",
-  "id": 123,
-  "flag": true
+  "authenticated": true
 }
+
+
+

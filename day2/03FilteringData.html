@@ -19,12 +19,19 @@
 <script>
     var app = angular.module('myApp',[]);
 
-    app.controller('myController', function($scope){
-        $scope.employeesList = [{empId:23, empName:'Ramit'},
-            {empId:123, empName:'Priya'},
-            {empId:124, empName:'Priya'},
-            {empId:2, empName:'Rahul'},
-            {empId:233, empName:'Arun'}]
+    app.controller('myController', function($scope ,$http){
+        $http({
+            url: 'employees.json',
+            method: 'GET'
+        }).success(function(data){
+            console.log('Data Fetched Successfully')
+            $scope.employeesList = data
+
+        }).error(function(data){
+            console.log('Error fetching data')
+        })
+
+
     })
 
 

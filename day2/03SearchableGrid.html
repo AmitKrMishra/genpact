@@ -28,13 +28,21 @@
 <script src="../lib/angular.js"></script>
 <script>
     var app = angular.module('myApp',[]);
-    app.controller('myController', function($scope){
-        $scope.employeesList = [{empId:23, empName:'Ramit'},
-            {empId:123, empName:'Priya'},
-            {empId:124, empName:'Priya'},
-            {empId:2, empName:'Rahul'},
-            {empId:233, empName:'Arun'}]
-        console.log($scope)
+    app.controller('myController', function($scope, $http){
+        $http({
+//            url: 'http://localhost:63342/GenpactAngularJSDemo/day2/employees.json',
+            url: 'AnyURL',
+            method: 'POST',
+            data: {"name": "Puneet"}
+        }).success(function(data, status, headers, config){
+            console.log('Data Fetched Successfully');
+            console.log(status)
+
+            $scope.employeesList = data
+
+        }).error(function(data){
+            console.log('Error fetching data')
+        })
     })
 
 
