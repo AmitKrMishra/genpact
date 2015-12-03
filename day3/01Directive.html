@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+   <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/css/foundation.css" rel="stylesheet"/>
+-->
+    <style>
+
+
+    </style>
+</head>
+<body>
+
+<div ng-app="myApp">
+
+
+    <input type="text" ng-model="dynamicstyle" placeholder="Enter style here"/>
+
+   <div panel panelstyle="button" myclass="btn btn-primary">Some text and will change to Panel on mouse enter event</div>
+
+
+    <div panel panelstyle="panel" myclass="btn btn-success">Some text and will change to Panel on mouse enter event</div>
+
+
+</div>
+<script src="../lib/angular.js"></script>
+<script>
+    var app = angular.module('myApp', []);
+
+    app.directive('panel', function () {
+        return {
+            restrict: 'AEC',
+            link: function (scope, element, attr) {
+                console.log(scope)
+                console.log(attr)
+                console.log(element)
+                element.bind('mouseenter', function(){
+                    console.log('Mouse enter')
+                    element.addClass(scope.dynamicstyle)
+
+                })
+
+                element.bind('mouseleave', function(){
+                    console.log('Mouse leave')
+                    element.removeClass(scope.dynamicstyle)
+
+                })
+            }
+
+
+        }
+    })
+
+
+</script>
+
+
+</body>
+</html>
