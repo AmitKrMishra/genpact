@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/css/foundation.css" rel="stylesheet"/>-->
+</head>
+<body>
+
+<div ng-app="myApp">
+
+    <input type="text" ng-model="search.desc"/>
+
+    <div ng-controller="myController">
+<div ng-repeat="sidebox in sideboxes | filter:search">
+
+    <sidebox title="{{sidebox.title}}">{{sidebox.desc}}</sidebox>
+
+</div>
+
+    </div>
+    <script src="../lib/angular.js"></script>
+    <script>
+        var app = angular.module('myApp', []);
+
+        app.directive('sidebox', function () {
+            return {
+                restrict: 'AEC',
+                templateUrl: 'partial/sidebox.html',
+                transclude: true,
+                scope: {
+                    title: "@title"
+
+                }
+
+            }
+        })
+        app.controller('myController', function ($scope) {
+            $scope.sideboxes = [{
+                title: "AngularJS",
+                desc: 'AngularJS is a frontend UI framework'
+            },
+                {
+                    title: "EmberJS",
+                    desc: 'EmberJS is a frontend UI framework'
+                },
+                {
+                    title: "CanJS",
+                    desc: 'CanJS is a frontend UI framework'
+                },
+                {
+                    title: "BackBoneJS",
+                    desc: 'BackBoneJS is a frontend UI framework'
+                },
+                {
+                    title: "NodeJS",
+                    desc: 'NodeJS is a backend JS framework'
+                }]
+        })
+
+
+    </script>
+
+
+</body>
+</html>
